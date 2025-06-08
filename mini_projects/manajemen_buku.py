@@ -72,6 +72,65 @@ class Perpustakaan:
         except FileNotFoundError:
             print(f"File '{nama_file}' tidak ditemukan.")
 
+        
+def menu():
+    perpus = Perpustakaan()
+    nama_file = "buku.json"
+
+    while True:
+        print("\n=== Menu Perpustakaan ===")
+        print("1. Tambah Buku")
+        print("2. Lihat Semua Buku")
+        print("3. Cari Buku")
+        print("4. Edit Buku")
+        print("5. Hapus Buku")
+        print("6. Simpan ke File")
+        print("7. Muat dari File")
+        print("0. Keluar")
+
+        pilihan = input("Pilih menu (0-7): ")
+
+        if pilihan == "1":
+            judul = input("Judul: ")
+            penulis = input("Penulis: ")
+            tahun = input("Tahun Terbit: ")
+            buku = Buku(judul, penulis, int(tahun))
+            perpus.tambah_buku(buku)
+
+        elif pilihan == "2":
+            perpus.tampilkan_semua()
+
+        elif pilihan == "3":
+            keyword = input("Kata kunci judul: ")
+            perpus.cari_buku(keyword)
+
+        elif pilihan == "4":
+            judul = input("Judul buku yang ingin diedit: ")
+            tahun_baru = input("Tahun terbit baru: ")
+            perpus.edit_buku(judul, int(tahun_baru))
+
+        elif pilihan == "5":
+            judul = input("Judul buku yang ingin dihapus: ")
+            perpus.hapus_buku(judul)
+
+        elif pilihan == "6":
+            perpus.simpan_ke_file(nama_file)
+
+        elif pilihan == "7":
+            perpus.muat_dari_file(nama_file)
+
+        elif pilihan == "0":
+            print("Terima kasih! Keluar dari program.")
+            break
+
+        else:
+            print("Pilihan tidak valid.")
+
+
+if __name__ == "__main__":
+    menu()
+
+
 # Inisialisasi perpustakaan
 perpus = Perpustakaan()
 
@@ -111,4 +170,6 @@ perpus.tampilkan_semua()
 perpus.muat_dari_file("buku.json")
 print("\nSetelah memuat ulang:")
 perpus.tampilkan_semua()
+
+print("-"*20)
 
