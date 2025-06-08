@@ -1,13 +1,12 @@
 # Class Buku
-#  Tahap 1: Struktur Dasar Program
 class Buku:
     def __init__(self, judul, penulis, tahun):
         self.judul = judul
         self.penulis = penulis
         self.tahun = tahun
 
-    def tampilkan_info(self):
-        print(f"'{self.judul}' oleh {self.penulis} ({self.tahun})")
+    def __str__(self):
+        return f"'{self.judul}' oleh {self.penulis} ({self.tahun})"
 
 
 # Class Perpustakaan
@@ -17,22 +16,65 @@ class Perpustakaan:
 
     def tambah_buku(self, buku):
         self.daftar_buku.append(buku)
-        print(f"Buku '{buku.judul}' berhasil ditambahkan!")
+        print("Buku berhasil ditambahkan.")
 
-    def tampilkan_semua_buku(self):
+    def tampilkan_semua(self):
         if not self.daftar_buku:
-            print("Belum ada buku dalam perpustakaan.")
+            print("Belum ada buku.")
         else:
-            print("Daftar Buku:")
+            print("daftar Buku:")
             for buku in self.daftar_buku:
-                buku.tampilkan_info()
+                print(buku)
+
+    def cari_buku(self, keyword):
+        hasil = [b for b in self.daftar_buku if keyword.lower() in b.judul.lower()]
+        if hasil:
+            for b in hasil:
+                print(f"Ditemukan: {b}")
+        else:
+            print("Buku tidak ditemukan.")
+
+    def edit_buku(self, judul, ganti_tahun):
+        for buku in self.daftar_buku:
+            if buku.judul.lower() == judul.lower():
+                buku.tahun = ganti_tahun
+                print(f"Buku '{judul}' diedit. tahun terbit = {ganti_tahun}")
+                return
+        print(f"Buku '{judul}' tidak ditemukan.")
+
+    def hapus_buku(self, judul):
+        for buku in self.daftar_buku:
+            if buku.judul.lower() == judul.lower():
+                self.daftar_buku.remove(buku)
+                print(f"Buku '{judul}' dihapus.")
+                return
+        print(f"Buku '{judul}' tidak ditemukan.")
 
 
-buku1 = Buku("Malice", "Ezekiel", "2024")
-buku2 = Buku("Obelisk", "John", "2025")
+# Inisialisasi perpustakaan
+perpus = Perpustakaan()
 
-Perpus1 = Perpustakaan()
-Perpus1.tambah_buku(buku1)
-Perpus1.tambah_buku(buku2)
+# Tambah beberapa buku
+b1 = Buku("Laskar Pelangi", "Andrea Hirata", 2005)
+b2 = Buku("Negeri 5 Menara", "Ahmad Fuadi", 2009)
 
-Perpus1.tampilkan_semua_buku()
+perpus.tambah_buku(b1)
+perpus.tambah_buku(b2)
+
+# Tampilkan semua buku
+perpus.tampilkan_semua()
+
+# Cari buku
+perpus.cari_buku("Laskar")
+
+# Hapus buku
+# perpus.update_buku("Laskar Pelangi", 2010)
+perpus.edit_buku("Laskar Pelangi", 2010)
+
+perpus.tampilkan_semua()
+
+perpus.edit_buku("Negeri 5 Menara", 2015)
+
+perpus.tampilkan_semua()
+# perpus.hapus_buku("Laskar Pelangi")
+
