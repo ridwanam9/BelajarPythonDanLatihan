@@ -1,4 +1,7 @@
 # Class Buku
+import json
+
+
 class Buku:
     def __init__(self, judul, penulis, tahun):
         self.judul = judul
@@ -50,6 +53,24 @@ class Perpustakaan:
                 return
         print(f"Buku '{judul}' tidak ditemukan.")
 
+        # Menyimpan data ke file
+    def simpan_ke_file(self, nama_file):
+        data = [
+            {"judul": b.judul, "penulis": b.penulis, "tahun": b.tahun}
+            for b in self.daftar_buku
+        ]
+        with open(nama_file, "w") as f:
+            json.dump(data, f)
+        print(f"Data disimpan ke '{nama_file}'.")
+
+    def muat_dari_file(self, nama_file):
+        try:
+            with open(nama_file, "r") as f:
+                data = json.load(f)
+                self.daftar_buku = [Buku(**item) for item in data]
+            print(f"Data berhasil dimuat dari '{nama_file}'.")
+        except FileNotFoundError:
+            print(f"File '{nama_file}' tidak ditemukan.")
 
 # Inisialisasi perpustakaan
 perpus = Perpustakaan()
@@ -77,4 +98,17 @@ perpus.edit_buku("Negeri 5 Menara", 2015)
 
 perpus.tampilkan_semua()
 # perpus.hapus_buku("Laskar Pelangi")
+
+# Simpan ke file
+perpus.simpan_ke_file("buku.json")
+
+# Hapus semua data dari daftar
+perpus.daftar_buku = []
+print("\nSetelah penghapusan manual:")
+perpus.tampilkan_semua()
+
+# Muat ulang dari file
+perpus.muat_dari_file("buku.json")
+print("\nSetelah memuat ulang:")
+perpus.tampilkan_semua()
 
