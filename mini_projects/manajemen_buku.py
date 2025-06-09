@@ -88,12 +88,23 @@ def menu():
         print("7. Muat dari File")
         print("0. Keluar")
 
-        pilihan = input("Pilih menu (0-7): ")
+        while True:
+            pilihan = input("Pilih menu (0-7): ")
+            if pilihan in [str(i) for i in range(8)]:
+                break
+            print("Masukkan angka antara 0 sampai 7.")
+
 
         if pilihan == "1":
             judul = input("Judul: ")
             penulis = input("Penulis: ")
-            tahun = input("Tahun Terbit: ")
+            while True:
+                tahun = input("Tahun Terbit: ")
+                if tahun.isdigit():
+                    tahun = int(tahun)
+                    break
+                else:
+                    print("Masukkan tahun berupa angka.")
             buku = Buku(judul, penulis, int(tahun))
             perpus.tambah_buku(buku)
 
