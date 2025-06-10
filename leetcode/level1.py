@@ -16,7 +16,7 @@ print("-"*30)
 def sum_to_n(n):
     return sum(range(1, n + 1))
 
-n = 6
+n = 5
 result = sum_to_n(n)
 print(f"The sum of numbers from 1 to {n} is: {result}")
 
