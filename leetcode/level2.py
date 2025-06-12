@@ -1,32 +1,26 @@
 # 4. Cari Nilai Maksimum dalam List
 
 def find_max(nums):
+    return max(nums)
 
-    maximum = max(nums)
-    print(f"Nilai maximal = {maximum}")
-
-input_nums = [4,3,14,8,20,17,19,34]
-find_max(input_nums)
-
+print(find_max([4,3,14,8,20,17,19,34]))
 
 # 5. Filter Angka Genap
 def filter_even(nums):
+    return [x for x in nums if x % 2 == 0]
 
-    evens = [x for x in nums if x % 2 == 0 ]
-    print(evens)
+print(filter_even([4,3,14,8,20,17,19,34]))
 
-input_nums = [4,3,14,8,20,17,19,34]
-filter_even(input_nums)
 
 
 # 6. Hitung Frekuensi Karakter
 def char_count(s):
+    result = {}
+    for char in s.lower():
+        if char in result:
+            result[char] += 1
+        else:
+            result[char] = 1
+    return result
 
-    thisdict = {}
-    for x in s.lower():
-        count = s.lower().count(x)
-        thisdict[f"{x}"] = count
-
-    print(thisdict)
-
-char_count("RidwanAmirulMaulana")
+print(char_count("RidwanAmirulMaulana"))
