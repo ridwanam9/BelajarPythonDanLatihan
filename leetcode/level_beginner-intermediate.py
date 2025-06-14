@@ -28,19 +28,17 @@ print(word_count("Aku sedang belajar Python"))
 # Buat fungsi is_prime(n) yang mengembalikan True jika n adalah bilangan prima, False jika bukan.
 
 def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5)+1):  # Cek sampai akar n lebih efisien
+        if n % i == 0:
+            return False
+    return True
 
-    if n == 0 or n == 1:
-        return True
-    elif n > 1:
-        for i in range(2, n + 1):
-            if n % i == 0:
-                return False
-            else:
-                return True
+print(is_prime(9))   # False
+print(is_prime(8))   # False
+print(is_prime(17))  # True
 
-print(is_prime(9))
-print(is_prime(8))
-print(is_prime(17))
 
 # 4. Ubah Huruf ke Angka (Ordinal)
 # Deskripsi:
@@ -50,21 +48,25 @@ print(is_prime(17))
 #         "halo" -> [8, 1, 12, 15]
 
 def char_to_num(s):
-    
-    chars = list(map(chr, range(97, 123)))
 
-    list_s = []
-    for x in s:
-        x_kecil = x.lower()
-        list_s.append(x_kecil)
+    # # cara panjang
+    # chars = list(map(chr, range(97, 123)))
 
-    angka = []
-    for x in range(len(list_s)):
-        for y in range(len(chars)):
-            if chars[y] == list_s[x]:
-                angka.append(y + 1)
+    # list_s = []
+    # for x in s:
+    #     x_kecil = x.lower()
+    #     list_s.append(x_kecil)
+
+    # angka = []
+    # for x in range(len(list_s)):
+    #     for y in range(len(chars)):
+    #         if chars[y] == list_s[x]:
+    #             angka.append(y + 1)
                 
-    return angka
+    # return angka
+
+    # # cara pendek
+    return [ord(c.lower()) - 96 for c in s if c.isalpha()]
 
 
 print(char_to_num("abc"))
@@ -80,30 +82,14 @@ print(char_to_num("Halo"))
 # Input: ["aku", "kua", "kamu", "mauk", "satu", "taus"]
 # Output: [['aku', 'kua'], ['kamu', 'mauk'], ['satu', 'taus']]
 
+from collections import defaultdict
+
 def group_anagrams(words):
-
-    list_combined = []
+    groups = defaultdict(list)
+    for word in words:
+        key = ''.join(sorted(word.lower()))
+        groups[key].append(word)
     
-    for x in words:
-        for y in words[1:]:
-            if x.lower() != y.lower():
-                if sorted(x.lower()) == sorted(y.lower()):
-                    list_combined.append([x, y])
-                    # if [x, y] == [y, x] in list_combined:
-                    #     list_combined.remove([y, x])
-          
-
-    # for x in range(len(words)):
-    #     words[x].sort()
-    #     for y in range(1, len(words)):
-    #         words[y].sort()
-    #         if words[x] == words[y]:
-    #             list_combined.append([words[x], words[y]])
-
-    # list_set = list(set(list_combined))
-    return list_combined
-
-
-    # sorted(s1.lower()) == sorted(s2.lower())
+    return list(groups.values())
 
 print(group_anagrams(["aku", "kua", "kamu", "mauk", "satu", "taus", "anagram", "anabul"]))
