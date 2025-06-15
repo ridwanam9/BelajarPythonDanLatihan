@@ -21,6 +21,9 @@ def top_words(text, k):
             count_dict[word] = 1
             pass
 
-    return count_dict, k
+    sorted_words = sorted(count_dict.items(), key=lambda x: x[1], reverse=True)
+        
 
-print(top_words("saya belajar python python saya suka python", 1))
+    return sorted_words[:k]
+
+print(top_words("saya belajar python python saya suka python", 2))
