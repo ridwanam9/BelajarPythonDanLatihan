@@ -1,19 +1,6 @@
 
 def power(base, exponent):
 
-    # for x in range(exponent):
-    #     print(x)
-
-    # return base**exponent
-
-    # i = 1
-    # while 1 < exponent + 1:
-    #     base *= base
-    #     print(base)
-    #     i += 1
-
-    # return base
-
     initial = base
     for x in range(exponent - 1):
         initial *= base
@@ -24,6 +11,6 @@ def power(base, exponent):
 
 print(power(2, 3))
 print(power(2, 4))
-print(power(2, 6))
-print(power(2, 2))
-# Output: 8  (karena 2 * 2 * 2 = 8)
+print(power(3, 4))
+print(power(3, 3))
+
