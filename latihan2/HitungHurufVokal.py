@@ -15,6 +15,6 @@ def count_vowels(words):
 
 
 
-# print(count_vowels("halo dunia"))
-print(count_vowels("hAlo dunia"))
+print(count_vowels("halo dunia"))
+# print(count_vowels("hAlo dunia"))
 
