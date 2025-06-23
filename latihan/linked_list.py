@@ -4,10 +4,10 @@ class Node:
         self.next = None
 
 class Linked_list:
-    def __init__(self, head):
-        self.head = head
+    def __init__(self):
+        self.head = None
 
-    def append(self, data):
+    def add_at_end(self, data):
         new_node = Node(data)
         if self.head is None:
             self.head = new_node
@@ -24,3 +24,10 @@ class Linked_list:
             print(current_node.data, end=" -> ")
             current_node = current_node.next
         print("None")
+
+
+lists = Linked_list()
+lists.add_at_end(10)
+lists.add_at_end(20)
+lists.add_at_end(30)
+lists.print_list()
