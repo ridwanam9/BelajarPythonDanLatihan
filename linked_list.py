@@ -12,7 +12,7 @@ class LinkedList:
     # Method to add a node at the beginning of the LL
     def insertAtBegin(self, data):
         new_node = Node(data)
-        new_node.next = self.head
+        new_node.next = self.head # None
         self.head = new_node
 
     # Method to add a node at any index
@@ -37,9 +37,9 @@ class LinkedList:
 
     # Method to add a node at the end of LL
     def insertAtEnd(self, data):
-        new_node = Node(data)
+        new_node = Node(data) #new_node = A
         if self.head is None:
-            self.head = new_node
+            self.head = new_node #berarti self.head = A
             return
 
         current_node = self.head
