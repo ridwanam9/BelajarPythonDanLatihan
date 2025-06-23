@@ -7,7 +7,12 @@ class Linked_list:
     def __init__(self):
         self.head = None
 
-    def add_at_end(self, data):
+    def insert_at_beginning(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    def insert_at_end(self, data):
         new_node = Node(data)
         if self.head is None:
             self.head = new_node
@@ -26,8 +31,10 @@ class Linked_list:
         print("None")
 
 
+
 lists = Linked_list()
-lists.add_at_end(10)
-lists.add_at_end(20)
-lists.add_at_end(30)
+lists.insert_at_end(10)
+lists.insert_at_end(20)
+lists.insert_at_end(30)
+lists.insert_at_beginning(0)
 lists.print_list()
