@@ -21,9 +21,13 @@ if __name__ == '__main__':
     for x in range(len(sorted_by_lowest_score)):
         set_of_score.append(sorted_by_lowest_score[x][1])
 
+    names = []
     # find the names that have secomd lowest score
     for x in range(len(sorted_by_lowest_score)):
         if sorted_by_lowest_score[x][1] == set_of_score[1]:
-            print(sorted_by_lowest_score[x][0])
-
-
+            # print(sorted_by_lowest_score[x][0])
+            names.append(sorted_by_lowest_score[x][0])
+    
+    names = sorted(names)
+    for name in names:
+        print(name)
