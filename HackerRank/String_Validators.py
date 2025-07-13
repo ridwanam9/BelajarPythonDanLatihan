@@ -2,6 +2,7 @@
 if __name__ == '__main__':
     s = input()
 
+    # Menggunakan perulangan
     list_isalnum = []
     list_isalpha = []
     list_isdigit = []
@@ -46,8 +47,7 @@ if __name__ == '__main__':
     print(list_islower[0])
     print(list_isupper[0])
 
-
-
+    # # Menggunakan regex
     # print(bool(re.search(r'[a-zA-Z0-9]', s)))
     # print(bool(re.search(r'[a-zA-Z]', s)))
     # print(bool(re.search(r'\d', s)))
