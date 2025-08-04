@@ -5,8 +5,11 @@ class Solution(object):
         :type ch: str
         :rtype: str
         """
-
-        reversed_prefix = word[word.index("d")::-1] + word[word.index("d")+1::]
+        
+        ch_index = word.find(ch)
+        reversed_prefix = word[ch_index::-1] + word[ch_index+1::]
+        if ch_index == -1:
+            return word
         return reversed_prefix
 
 print(Solution().reversePrefix("abcdefd", "d"))
