@@ -10,12 +10,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-
+        # Join the two same array nums and returned list ans
         ans = nums + nums
         return ans
 
-sol = Solution()
-print(sol.getConcatenation([1,2,1]))
+
+print(Solution().getConcatenation([1,2,1]))
 
         
         
