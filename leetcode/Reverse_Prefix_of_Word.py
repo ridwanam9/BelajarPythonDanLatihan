@@ -8,7 +8,7 @@ class Solution(object):
         
         ch_index = word.find(ch)
         reversed_prefix = word[ch_index::-1] + word[ch_index+1::]
-        if ch_index == -1:
+        if not ch in word:
             return word
         return reversed_prefix
 
