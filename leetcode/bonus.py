@@ -22,5 +22,5 @@ def two_sum(nums, target):
                 return [i, j]
     return None
 
-print(two_sum([1,2,3,8,9,20,46], 5))   # [0, 2]
+print(two_sum([1,2,3,8,9,20,46], 5))   # [1, 2]
 print(two_sum([1,2,3,8,9,20,46], 17))  # [3, 4]
