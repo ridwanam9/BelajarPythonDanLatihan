@@ -44,25 +44,26 @@ t = int(input())
 for _ in range(t):
     n, k = map(int, input().split())
     a = list(map(int, input().split()))
-    # print(f"n = {n}")
-    # print(f"k = {k}")
-    # print(f"a = {a}")
+
     steps = sum(a)
-    # is_k_thrown = False
-    random_step = random.randrange(0, steps)
-    for i in range(1, steps+1):
+    is_k_thrown = False
+    random_step = random.randrange(0, steps) #take one random step to change all items in the list 
+
+    for i in range(steps+1):
         if i == random_step:
-            a[:] = [k] * len(a) #change all items in a list into k value
-            print(a)
-            # is_k_thrown = True
-            if sum(a)%2==1:
-                print("no") 
-            else:
-                print("true") 
-    # if len(a)%2==1:
-    #         print("no") 
-    # else:
-    #     print("true") 
-    print("---------------------------")
+            is_k_thrown = True
+
+    if is_k_thrown == True:
+        a[:] = [k] * len(a) #change all items in a list into k value
+        if sum(a)%2==0 or sum(a)==1:
+            print("yes") 
+        else:
+            print("no") 
+    else:
+        if sum(a)%2==0 or sum(a)==1:
+                print("yes") 
+        else:
+            print("no") 
+
                 
 
