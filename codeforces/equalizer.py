@@ -38,32 +38,43 @@
 
 # You can output the answer in any case (upper or lower). For example, the strings "yEs", "yes", "Yes", and "YES" will be recognized as positive responses.
 
-import random
+# import random
+
+# t = int(input())
+# for _ in range(t):
+#     n, k = map(int, input().split())
+#     a = list(map(int, input().split()))
+
+#     steps = sum(a)
+#     is_k_thrown = False
+#     random_step = random.randrange(0, steps) #take one random step to change all items in the list 
+
+#     for i in range(steps+1):
+#         if i == random_step:
+#             is_k_thrown = True
+
+#     if is_k_thrown == True:
+#         a[:] = [k] * len(a) #change all items in a list into k value
+#         if sum(a)%2==0 or sum(a)==1:
+#             print("yes") 
+#         else:
+#             print("no") 
+#     else:
+#         if sum(a)%2==0 or sum(a)==1:
+#                 print("yes") 
+#         else:
+#             print("no") 
+
+                
 
 t = int(input())
 for _ in range(t):
     n, k = map(int, input().split())
     a = list(map(int, input().split()))
 
-    steps = sum(a)
-    is_k_thrown = False
-    random_step = random.randrange(0, steps) #take one random step to change all items in the list 
+    S = sum(a)
 
-    for i in range(steps+1):
-        if i == random_step:
-            is_k_thrown = True
-
-    if is_k_thrown == True:
-        a[:] = [k] * len(a) #change all items in a list into k value
-        if sum(a)%2==0 or sum(a)==1:
-            print("yes") 
-        else:
-            print("no") 
+    if S % 2 == 1 or (n * k) % 2 == 0:
+        print("YES")
     else:
-        if sum(a)%2==0 or sum(a)==1:
-                print("yes") 
-        else:
-            print("no") 
-
-                
-
+        print("NO")
