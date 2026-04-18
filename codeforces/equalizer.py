@@ -71,10 +71,9 @@ t = int(input())
 for _ in range(t):
     n, k = map(int, input().split())
     a = list(map(int, input().split()))
-
-    S = sum(a)
-
-    if S % 2 == 1 or (n * k) % 2 == 0:
+    
+    steps = sum(a)
+    if steps % 2 == 1 or (n * k) % 2 == 0:
         print("YES")
     else:
         print("NO")
