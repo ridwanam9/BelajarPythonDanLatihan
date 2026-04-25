@@ -16,3 +16,6 @@ print(a)
 a.append(30)
 print("\nAfter Adding Elements:")
 print(a)
+
+
+
