@@ -86,6 +86,7 @@ print(orang3.species)
 print("-------------")
 
 orang4.greed()
+
 # Memodifikasi properti
 orang4.age = 25
 orang4.greed()
@@ -100,15 +101,14 @@ print(orang5.species)
 orang5.celebrate_birthday()
 
 
+print("-------------")
 
 # print("--------Error---------")
 # # menghapus properti
 # del orang4.age
 # orang4.greed() # error
 
-
-
-
+# Methode with parameters
 class calculator:
     def add(self, a, b):
         return a+b
@@ -118,4 +118,24 @@ class calculator:
 calc = calculator()
 print(calc.add(3, 5))
 print(calc.multiply(4, 7))
+
+
+print("-------------")
+
+
+# __str__ methode
+# methode yang menentukan cara value dikembalikan saat print object
+class buku:
+    def __init__(self, judul, tanggal):
+        self.judul = judul
+        self.tanggal = tanggal
+
+    def __str__(self):
+        return f"Buku ini berjudul {self.judul} yang diterbitkan tanggal {self.tanggal}"
+    
+
+buku1 = buku("Narnia", "2 Januari")
+print(buku1) # output: Buku ini berjudul Narnia yang diterbitkan tanggal 2 Januari
+
+
 
